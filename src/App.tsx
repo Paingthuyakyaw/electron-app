@@ -34,6 +34,7 @@ const App: React.FC = () => {
     <div>
       <h1>Your Machine UUID</h1>
       <p>{uuid ? uuid : "Loading..."}</p>
+      <p>Hello wolrd</p>
     </div>
   );
 };
