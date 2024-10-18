@@ -17,10 +17,9 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const fetchUUID = async () => {
-      console.log(window.electron); // Check if the Electron API is available
 
       if (window.electron) {
-        const machineUUID = await window.electron.getUUID();
+        const machineUUID = await window.electron.getUUID();        
         setUuid(machineUUID);
       } else {
         setUuid("Electron is not available.");
