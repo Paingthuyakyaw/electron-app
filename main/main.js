@@ -50,18 +50,22 @@ const appServe = app.isPackaged
 
 // const url = "http://localhost:5173";
 
-const url = "https://capella-os.vercel.app/"
+const url = "https://capella-os.vercel.app/";
 
 const createWindow = async () => {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
+      contextIsolation: true,
       preload: path.join(__dirname, "preload.js"),
+      nodeIntegration: false,
+      webSecurity: true,
+      sandbox: true,
     },
     title: "Capella OS",
     autoHideMenuBar: true,
-    icon : path.join(__dirname,"public/capella-os-icon.png")
+    icon: path.join(__dirname, "public/capella-os-icon.png"),
   });
 
   win.loadURL(url);
