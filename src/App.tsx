@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Button } from "./components/ui/button";
 
 // Define a custom interface for the Electron API
 interface ElectronAPI {
@@ -17,9 +18,8 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const fetchUUID = async () => {
-
       if (window.electron) {
-        const machineUUID = await window.electron.getUUID();        
+        const machineUUID = await window.electron.getUUID();
         setUuid(machineUUID);
       } else {
         setUuid("Electron is not available.");
@@ -34,6 +34,7 @@ const App: React.FC = () => {
       <h1>Your Machine UUID</h1>
       <p>{uuid ? uuid : "Loading..."}</p>
       <p>Hello wolrd</p>
+      <Button>Button</Button>
     </div>
   );
 };
