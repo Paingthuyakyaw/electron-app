@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Button } from "./components/ui/button";
+import React from "react";
+import UseDeviceUUID from "./hook/use-device-uuid";
 
 // Define a custom interface for the Electron API
 interface ElectronAPI {
@@ -14,27 +14,15 @@ declare global {
 }
 
 const App: React.FC = () => {
-  const [uuid, setUuid] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchUUID = async () => {
-      if (window.electron) {
-        const machineUUID = await window.electron.getUUID();
-        setUuid(machineUUID);
-      } else {
-        setUuid("Electron is not available.");
-      }
-    };
-
-    fetchUUID();
-  }, []);
+  const {uuid} = UseDeviceUUID()
 
   return (
     <div>
       <h1>Your Machine UUID</h1>
       <p>{uuid ? uuid : "Loading..."}</p>
       <p>Hello wolrd</p>
-      <Button>Button</Button>
+      {/* <Button>Button</Button> */}
     </div>
   );
 };
